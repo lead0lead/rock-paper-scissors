@@ -33,7 +33,7 @@ function playRound(playerSelection, computerSelection){
         return result;
     }
 
-    else if(playerSelection != "rock" || "paper" || "scissors"){
+    else if(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors"){
         //return `Invalid Input. Please enter "Rock", "Paper" or "Scissors".`
         result.push("invalid", playerSelection, computerSelection);
         return result;
@@ -48,28 +48,31 @@ function playGame(){
 
     for (let i= 0; i <= 5; i++){
         let playerSelection = prompt("Enter rock, paper or scissors").toLowerCase();
-        if (playRound(playerSelection, getComputerChoice())[0] === "tie"){
+        let roundResult = playRound(playerSelection, getComputerChoice())[0];
+        
+        if (roundResult === "tie"){
          console.log("tie");
          console.log(`Score: ${playerScore}:${computerScore}`);
         }
-        else if (playRound(playerSelection, getComputerChoice())[0] === "loss"){
+        else if (roundResult === "loss"){
          console.log("loss");
-         playerScore++;
          computerScore++;
          console.log(`Score: ${playerScore}:${computerScore}`);
         }
-        else if (playRound(playerSelection, getComputerChoice())[0] === "win"){
+        else if (roundResult === "win"){
          console.log("win");
          playerScore++;
-         computerScore++;
          console.log(`Score: ${playerScore}:${computerScore}`);
         }
-        else if (playRound(playerSelection, getComputerChoice())[0] === "invalid"){
+        else if (roundResult === "invalid"){
          console.log("Invalid Input: Please enter 'Rock', 'Paper' or 'Scissors'.");
+        }
+        else{
+            console.log(`Something went wrong: ${console.log(playRound(playerSelection, getComputerChoice())[0])}`);
         }
     }
 
-    if (playerScore = computerScore){
+    if (playerScore == computerScore){
         console.log(`Tie! The game ended with a score of ${playerScore}:${computerScore}`)
     }
 
@@ -80,5 +83,7 @@ function playGame(){
     else if (playerScore > computerScore){
         console.log(`You win! The game ended with a score of ${playerScore}:${computerScore}`)
     }
+
 }
+
 playGame();
