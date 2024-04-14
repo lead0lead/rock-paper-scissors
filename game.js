@@ -16,31 +16,28 @@ function playRound(playerSelection, computerSelection){
     let result = [];
 
     if (playerSelection === computerSelection){
-        //return `Tie! ${playerSelection} is the same as ${computerSelection}`;
         result.push("tie", playerSelection, computerSelection);
         return result;
     }
 
     else if (playerSelection === "rock" && computerSelection === "paper" || playerSelection === "paper" && computerSelection === "scissors" || playerSelection === "scissors" && computerSelection === "rock"){
-        //return `You lose! ${computerSelection} beats ${playerSelection}`;
         result.push("loss", playerSelection, computerSelection);
         return result;
     }
 
     else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper"){
-        //return `You win! ${playerSelection} beats ${computerSelection}`;
+
         result.push("win", playerSelection, computerSelection);
         return result;
     }
 
     else if(playerSelection != "rock" || playerSelection != "paper" || playerSelection != "scissors"){
-        //return `Invalid Input. Please enter "Rock", "Paper" or "Scissors".`
+
         result.push("invalid", playerSelection, computerSelection);
         return result;
     }
 }
 
-/*console.log(playRound(prompt("Enter rock, paper or scissors").toLowerCase(), getComputerChoice()));*/
 
 function playGame(){
     let playerScore = 0;
